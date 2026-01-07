@@ -1,25 +1,33 @@
 package com.api.book.bootrestbook.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Book {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String author;
     private String title;
-
-    public Book(int id, String author, String title) {
-        this.id = id;
-        this.author = author;
-        this.title = title;
-    }
 
     public Book() {
     }
 
-    public int getId() {
+    public Book(String author, String title) {
+        this.author = author;
+        this.title = title;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) { 
         this.id = id;
     }
 
@@ -43,5 +51,4 @@ public class Book {
     public String toString() {
         return "Book [id=" + id + ", author=" + author + ", title=" + title + "]";
     }
-
 }
